@@ -24,6 +24,7 @@ spec:
           limits:
             memory: "1024Mi"
             cpu: "2000m"
+      nodeName: k3d-kubetutorial-server-1
   selector:
     matchLabels:
       apps: my-app

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-pod
+  labels:
+    app: frontend
+
+spec:
+  template:
+    metadata:
+      name: daemonset-pod
+      labels:
+        apps: my-app
+        tier: frontend
+    spec:
+      containers:
+      - name: my-container-nginx
+        image: nginx
+        command: ["nginx", "-g", "daemon off;"]
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "1000m"
+          limits:
+            memory: "1024Mi"
+            cpu: "2000m"
+  selector:
+    matchLabels:
+      apps: my-app

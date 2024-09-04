@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+    name: apache-pod-webserver
+    labels:
+        apps: my-app
+        tier: forntend
+        app-type: web
+
+spec:
+    containers:
+        - name: my-container-nginx
+          image: httpd

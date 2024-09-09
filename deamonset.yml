@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-pod
+  labels:
+    app: frontend
+
+spec:
+  updateStrategy:
+    type: OnDelete
+  template:
+    metadata:
+      name: deamonset-pod
+      labels:
+        apps: my-app
+        tier: frontend
+    spec:
+      containers:
+        - name: my-container-nginx
+          image: tomcat
+          command: ["nginx", "-g", "daemon off;"]
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "1000m"
+            limits:
+              memory: "1024Mi"
+              cpu: "2000m"
+      nodeName: k3d-test-server-0
+  selector:
+    matchLabels:
+      apps: my-app

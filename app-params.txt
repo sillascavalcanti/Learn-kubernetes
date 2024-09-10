@@ -1,0 +1,2 @@
+  database: mongodp
+  database_uri: mongodp://localhost:27017
